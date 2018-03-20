@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from shop_app.views import StartView, MainView, OfferView, PicturesOfferView, CushionsOfferView, AboutView, \
-    AboutDescriptionView, ContactView
+    AboutDescriptionView, ContactView, PictureView, CushionView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -31,5 +31,7 @@ urlpatterns = [
     url(r'^about/$', AboutView.as_view(), name='about'),
     url(r'^about/description/$', AboutDescriptionView.as_view(), name='desc'),
     url(r'^contact/$', ContactView.as_view(), name='contact'),
+    url(r'^picture/(?P<id>\d+)/$', PictureView.as_view(), name='picture'),
+    url(r'^cushion/(?P<id>\d+)/$', CushionView.as_view(), name='cushion'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 
 from shop_app.models import Picture, Cushion
@@ -35,9 +35,9 @@ class PicturesOfferView(View):
 
 class CushionsOfferView(View):
     def get(self, request):
-        cushion = Cushion.objects.all()
+        cushions = Cushion.objects.all()
         ctx = {
-            'cushion': cushion
+            'cushions': cushions
         }
         return render(request,
                       template_name='cushions_offer.html',
@@ -60,3 +60,25 @@ class ContactView(View):
     def get(self, request):
         return render(request,
                       template_name='contact.html')
+
+
+class PictureView(View):
+    def get(self, request, id):
+        picture = get_object_or_404(Picture, id=id)
+        ctx = {
+            'picture': picture
+        }
+        return render(request,
+                      template_name='picture.html',
+                      context=ctx)
+
+
+class CushionView(View):
+    def get(self, request, id):
+        cushion = get_object_or_404(Cushion, id=id)
+        ctx = {
+            'cushion': cushion
+        }
+        return render(request,
+                      template_name='cushion.html',
+                      context=ctx)

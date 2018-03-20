@@ -3,7 +3,9 @@
 <h2>Obrazy:</h2>
 {% for picture in pictures %}
 
-{{ picture }}
+<img src='{{ picture.image.url }}'/>
+<br><a href="{% url 'picture' picture.id %}">Szczegóły</a>
+{{ picture.price }}<br>
 
 {% endfor %}
 {% endblock %}

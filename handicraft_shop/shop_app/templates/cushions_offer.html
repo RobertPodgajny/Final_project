@@ -3,5 +3,9 @@
 <h2>Poduszki:</h2>
 {% for cushion in cushions %}
 
+<img src='{{ cushion.image.url }}'/>
+<br><a href="{% url 'cushion' cushion.id %}">Szczegóły</a>
+{{ cushion.price }}<br>
+
 {% endfor %}
 {% endblock %}
