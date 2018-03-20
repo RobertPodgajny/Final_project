@@ -42,3 +42,21 @@ class CushionsOfferView(View):
         return render(request,
                       template_name='cushions_offer.html',
                       context=ctx)
+
+
+class AboutView(View):
+    def get(self, request):
+        return render(request,
+                      template_name='about.html')
+
+
+class AboutDescriptionView(View):
+    def get(self, request):
+        return render(request,
+                      template_name='about_desc.html')
+
+
+class ContactView(View):
+    def get(self, request):
+        return render(request,
+                      template_name='contact.html')

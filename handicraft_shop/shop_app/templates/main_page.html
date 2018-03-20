@@ -4,35 +4,8 @@
     <meta charset="UTF-8">
     <title>Made by M</title>
     <style>
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
-}
 
-li {
-    float: left;
-}
 
-li a {
-    display: block;
-    color: #666;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #ddd;
-}
-
-li a.active {
-    color: white;
-    background-color: #4CAF50;
-}
     </style>
 </head>
 <body>
@@ -40,10 +13,25 @@ li a.active {
 {% block content %}
 <h2>Strona główna</h2>
 <ul>
-  <li><a class="active" href="">Oferta</a></li>
-  <li><a href="">O mnie</a></li>
-  <li><a href="">Kontact</a></li>
+  <li><a href="{% url 'offer'%}">Oferta</a>
+    <ul>
+        <li><a href="{% url 'pictures' %}">Obrazy</a></li>
+        <li><a href="{% url 'cushions' %}">Poduszki</a></li>
+    </ul>
+  </li>
+  <li><a href="{% url 'about' %}">O mnie</a>
+    <ul>
+        <li><a href="{% url 'desc' %}">Opis</a></li>
+        <li><a href="">Facebook</a></li>
+    </ul>
+  </li>
+  <li><a href="{% url 'contact' %}">Kontakt</a></li>
 </ul>
+
 {% endblock %}
+
+<!--{% block footer %}-->
+<!--Stopka-->
+<!--{% endblock %}-->
 </body>
 </html>
