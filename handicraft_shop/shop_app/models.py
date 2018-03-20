@@ -44,6 +44,7 @@ class Picture(models.Model):
     quantity = models.IntegerField()
     category = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=8, decimal_places=2)
+    description = models.TextField(null=True)
 
 
 class Cushion(models.Model):
@@ -52,6 +53,7 @@ class Cushion(models.Model):
     kind = models.SmallIntegerField(choices=KIND_OF_PILLOW)
     quantity = models.IntegerField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
+    description = models.TextField(null=True)
 
     def __str__(self):
         return "{}".format(self.get_kind_display())
@@ -66,4 +68,5 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
     pictures = models.ManyToManyField(Picture)
     cushions = models.ManyToManyField(Cushion)
+    description = models.TextField(null=True)
 

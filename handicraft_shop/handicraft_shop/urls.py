@@ -18,10 +18,14 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from shop_app.views import StartView, MainView
+from shop_app.views import StartView, MainView, OfferView, PicturesOfferView, CushionsOfferView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', StartView.as_view(), name='start'),
-    url(r'^main_page/$', MainView.as_view(), name='main')
+    url(r'^main_page/$', MainView.as_view(), name='main'),
+    url(r'^offer/$', OfferView.as_view(), name='offer'),
+    url(r'^offer/pictures/$', PicturesOfferView, name='pictures'),
+    url(r'^offer/cushions/$', CushionsOfferView, name='cushions'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
