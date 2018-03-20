@@ -1,4 +1,5 @@
 {% extends "main_page.html" %}
 {% block content %}
-{{ cushion }}
+<img src='{{ cushion.image.url }}'/>
+<br>{{ cushion.get_pillow_color_display }}
 {% endblock %}

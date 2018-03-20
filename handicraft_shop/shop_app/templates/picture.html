@@ -1,4 +1,6 @@
 {% extends "main_page.html" %}
 {% block content %}
-{{ picture }}
+<img src='{{ picture.image.url }}'/>
+<br>{{ picture.get_frame_color_display }}
+
 {% endblock %}
