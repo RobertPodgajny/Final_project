@@ -18,8 +18,10 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 
+from shop_app.views import StartView, MainView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
+    url(r'^$', StartView.as_view(), name='start'),
+    url(r'^main_page/$', MainView.as_view(), name='main')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
