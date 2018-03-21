@@ -1,6 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from django.views import View
 
+from shop_app.forms import LoginForm, RegistrationForm
 from shop_app.models import Picture, Cushion
 
 
@@ -82,3 +85,47 @@ class CushionView(View):
         return render(request,
                       template_name='cushion.html',
                       context=ctx)
+
+
+class LoginView(View):
+    def get(self, request):
+        form = LoginForm()
+        ctx = {
+            'form': form
+        }
+        return render(request,
+                      template_name='login.html',
+                      context=ctx)
+
+    def post(self, request):
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            nick = form.cleaned_data['nick']
+            password = form.cleaned_data['password']
+            user = authenticate(nick=nick, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect(reverse('main'))
+        ctx = {
+            'form': form
+        }
+        return render(request,
+                      template_name='login.html',
+                      context=ctx)
+
+
+class RegistrationView(View):
+    def get(self, request):
+        form = RegistrationForm()
+        ctx = {
+            'form': form
+        }
+        return render(request,
+                      template_name='register.html',
+                      context=ctx)
+
+    def post(self, request):
+        form = RegistrationForm(request.POST)
+
+
+
