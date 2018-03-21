@@ -1,10 +1,11 @@
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
 
 from shop_app.forms import LoginForm, RegistrationForm
-from shop_app.models import Picture, Cushion
+from shop_app.models import Picture, Cushion, User
 
 
 class StartView(View):
@@ -106,6 +107,7 @@ class LoginView(View):
             if user is not None:
                 login(request, user)
                 return redirect(reverse('main'))
+            return HttpResponse('Podano błędny nick lub hasło')
         ctx = {
             'form': form
         }
@@ -126,6 +128,14 @@ class RegistrationView(View):
 
     def post(self, request):
         form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            if User.objects.filter(nick='nick').exists():
+                form.add_error('nick', 'Ten nick jest już zajęty')
+            if ['password'] != ['password2']:
+                form.add_error('password', "Hasła do siebie nie pasują")
+            return render(request,
+                          template_name='register.html')
 
 
 
