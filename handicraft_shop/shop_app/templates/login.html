@@ -1,6 +1,7 @@
 {% extends "main_page.html" %}
 {%block content %}
 <form action="" method="POST">
+    <p>Zaloguj się</p>
     {{ form.as_p }}
     {% csrf_token %}
     <input type="submit" value="Zaloguj się">

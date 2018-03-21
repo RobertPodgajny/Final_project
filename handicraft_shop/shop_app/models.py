@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 FRAME_COLOR = (
@@ -26,14 +27,14 @@ KIND_OF_PILLOW = (
 )
 
 
-class User(models.Model):
-    nick = models.CharField(max_length=64, unique=True)
-    first_name = models.CharField(max_length=64)
-    last_name = models.CharField(max_length=64)
-    email = models.EmailField(max_length=128, unique=True)
-    password = models.CharField(max_length=128)
-    password2 = models.CharField(max_length=128)
+class Address(models.Model):
+    # username = models.CharField(max_length=64, unique=True)
+    # first_name = models.CharField(max_length=64)
+    # last_name = models.CharField(max_length=64)
+    # email = models.EmailField(max_length=128, unique=True)
+    # password = models.CharField(max_length=128)
     address = models.TextField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
 class Picture(models.Model):

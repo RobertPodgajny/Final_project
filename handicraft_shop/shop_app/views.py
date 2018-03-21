@@ -1,11 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
 
 from shop_app.forms import LoginForm, RegistrationForm
-from shop_app.models import Picture, Cushion, User
+from shop_app.models import Picture, Cushion, Address
 
 
 class StartView(View):
@@ -14,19 +16,19 @@ class StartView(View):
                       template_name='start_page.html')
 
 
-class MainView(View):
+class MainView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request,
                       template_name='main_page.html')
 
 
-class OfferView(View):
+class OfferView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request,
                       template_name='offer.html')
 
 
-class PicturesOfferView(View):
+class PicturesOfferView(LoginRequiredMixin, View):
     def get(self, request):
         pictures = Picture.objects.all()
         ctx = {
@@ -37,7 +39,7 @@ class PicturesOfferView(View):
                       context=ctx)
 
 
-class CushionsOfferView(View):
+class CushionsOfferView(LoginRequiredMixin, View):
     def get(self, request):
         cushions = Cushion.objects.all()
         ctx = {
@@ -48,25 +50,25 @@ class CushionsOfferView(View):
                       context=ctx)
 
 
-class AboutView(View):
+class AboutView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request,
                       template_name='about.html')
 
 
-class AboutDescriptionView(View):
+class AboutDescriptionView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request,
                       template_name='about_desc.html')
 
 
-class ContactView(View):
+class ContactView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request,
                       template_name='contact.html')
 
 
-class PictureView(View):
+class PictureView(LoginRequiredMixin, View):
     def get(self, request, id):
         picture = get_object_or_404(Picture, id=id)
         ctx = {
@@ -77,7 +79,7 @@ class PictureView(View):
                       context=ctx)
 
 
-class CushionView(View):
+class CushionView(LoginRequiredMixin, View):
     def get(self, request, id):
         cushion = get_object_or_404(Cushion, id=id)
         ctx = {
@@ -101,19 +103,20 @@ class LoginView(View):
     def post(self, request):
         form = LoginForm(request.POST)
         if form.is_valid():
-            nick = form.cleaned_data['nick']
+            username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(nick=nick, password=password)
+            user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect(reverse('main'))
-            return HttpResponse('Podano błędny nick lub hasło')
-        ctx = {
-            'form': form
-        }
-        return render(request,
-                      template_name='login.html',
-                      context=ctx)
+                return HttpResponse('Zalogowano')
+            return HttpResponse('Podano błędny login lub hasło')
+        return redirect(reverse('main'))
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect(reverse('start'))
 
 
 class RegistrationView(View):
@@ -129,13 +132,20 @@ class RegistrationView(View):
     def post(self, request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            if User.objects.filter(nick='nick').exists():
-                form.add_error('nick', 'Ten nick jest już zajęty')
-            if ['password'] != ['password2']:
-                form.add_error('password', "Hasła do siebie nie pasują")
-            return render(request,
-                          template_name='register.html')
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['new_password']
+            user = User.objects.create_user(username, email, password)
+
+            address = Address()
+
+            address.address = form.cleaned_data['address']
+            address.user = user
+            address.save()
+
+            if User.objects.filter(username='username').exists():
+                form.add_error('username', 'Ten login jest już zajęty')
+        return redirect(reverse('login'))
 
 
 

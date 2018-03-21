@@ -10,6 +10,12 @@
 </head>
 <body>
 <h2>Made by M</h2>
+        {% if request.user.is_authenticated %}
+        Jesteś zalogowany jako: {{ request.user.username }}
+        <p><a href="{% url 'logout' %}">Wyloguj się</a></p>
+        {% else %}
+        <p><a href="{% url 'login' %}">Zaloguj się</a></p>
+        {% endif %}
 {% block content %}
 <h2>Strona główna</h2>
 <ul>

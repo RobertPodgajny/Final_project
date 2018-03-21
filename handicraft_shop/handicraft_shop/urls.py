@@ -17,9 +17,10 @@ from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 from shop_app.views import StartView, MainView, OfferView, PicturesOfferView, CushionsOfferView, AboutView, \
-    AboutDescriptionView, ContactView, PictureView, CushionView, LoginView, RegistrationView
+    AboutDescriptionView, ContactView, PictureView, CushionView, RegistrationView, LogoutView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -33,7 +34,9 @@ urlpatterns = [
     url(r'^contact/$', ContactView.as_view(), name='contact'),
     url(r'^picture/(?P<id>\d+)/$', PictureView.as_view(), name='picture'),
     url(r'^cushion/(?P<id>\d+)/$', CushionView.as_view(), name='cushion'),
-    url(r'^login/$', LoginView.as_view(), name='login'),
-    url(r'register/$', RegistrationView.as_view(), name='register'),
+    url(r'^login/', auth_views.LoginView.as_view(template_name="login.html"), name='login'),
+    # url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^register/$', RegistrationView.as_view(), name='register'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
