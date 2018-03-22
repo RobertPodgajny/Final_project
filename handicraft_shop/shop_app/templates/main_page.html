@@ -39,7 +39,7 @@
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
+    background-color: coral;
 }
 
 .dropdown-content {
@@ -80,32 +80,35 @@
         {% else %}
         <p><a href="{% url 'login' %}">Zaloguj się</a></p>
         {% endif %}
-{% block content %}
-<h2>Strona główna</h2>
-{#<div class="navbar">#}
-{#<div class="dropdown">#}
-<ul>
-  <li><a href="{% url 'offer'%}">Oferta</a>
-    <ul>
-        <li><a href="{% url 'pictures' %}">Obrazy</a></li>
-        <li><a href="{% url 'cushions' %}">Poduszki</a></li>
-    </ul>
-  </li>
-{#    </div>#}
-  <li><a href="{% url 'about' %}">O mnie</a>
-    <ul>
-        <li><a href="{% url 'desc' %}">Opis</a></li>
-        <li><a href="">Facebook</a></li>
-    </ul>
-  </li>
-  <li><a href="{% url 'contact' %}">Kontakt</a></li>
-</ul>
 
-{#</div>#}
+<h2>Strona główna</h2>
+<div class="navbar">
+    <div class="dropdown">
+        <button class="dropbtn">Oferta
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="{% url 'pictures' %}">Obrazy</a>
+            <a href="{% url 'cushions' %}">Poduszki</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">O mnie
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="{% url 'desc' %}">Opis</a>
+            <a href="https://www.facebook.com/R%C4%99kodzie%C5%82o-MadeByM-356232168094854/" target="_blank">Facebook</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="{% url 'contact' %}">Kontakt</a>
+    </div>
+</div>
+
+{% block content %}
+
 {% endblock %}
 
-<!--{% block footer %}-->
-<!--Stopka-->
-<!--{% endblock %}-->
 </body>
 </html>

@@ -20,17 +20,17 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from shop_app.forms import LoginForm
-from shop_app.views import StartView, MainView, OfferView, PicturesOfferView, CushionsOfferView, AboutView, \
-    AboutDescriptionView, ContactView, PictureView, CushionView, RegistrationView, LogoutView
+from shop_app.views import StartView, MainView, PicturesOfferView, CushionsOfferView, AboutDescriptionView, \
+    ContactView, PictureView, CushionView, RegistrationView, LogoutView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', StartView.as_view(), name='start'),
     url(r'^main_page/$', MainView.as_view(), name='main'),
-    url(r'^offer/$', OfferView.as_view(), name='offer'),
+    # url(r'^offer/$', OfferView.as_view(), name='offer'),
     url(r'^offer/pictures/$', PicturesOfferView.as_view(), name='pictures'),
     url(r'^offer/cushions/$', CushionsOfferView.as_view(), name='cushions'),
-    url(r'^about/$', AboutView.as_view(), name='about'),
+    # url(r'^about/$', AboutView.as_view(), name='about'),
     url(r'^about/description/$', AboutDescriptionView.as_view(), name='desc'),
     url(r'^contact/$', ContactView.as_view(), name='contact'),
     url(r'^picture/(?P<id>\d+)/$', PictureView.as_view(), name='picture'),

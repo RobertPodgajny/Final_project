@@ -1,9 +1,18 @@
-{% extends "main_page.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona logowania</title>
+</head>
+
 {%block content %}
 <form action="" method="POST">
-    <p>Zaloguj się</p>
+    <h2>Strona logowania</h2>
+    <p><strong>Zaloguj się:</strong></p>
     {{ form.as_p }}
     {% csrf_token %}
     <input type="submit" value="Zaloguj się">
 </form>
 {% endblock %}
+
+</html>
