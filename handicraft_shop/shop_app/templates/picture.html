@@ -1,6 +1,8 @@
 {% extends "main_page.html" %}
 {% block content %}
-<img src='{{ picture.image.url }}'/>
-<br>{{ picture.get_frame_color_display }}
-
+    <img src='{{ picture.image.url }}'/>
+    <ul>
+        <li>Kolor ramki: {{ picture.get_frame_color_display }}</li>
+        <li>Rodzaj szkła</li>
+    </ul>
 {% endblock %}

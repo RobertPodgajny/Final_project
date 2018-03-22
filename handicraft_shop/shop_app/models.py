@@ -2,16 +2,19 @@ from django.contrib.auth.models import User
 from django.db import models
 
 FRAME_COLOR = (
+    (-1, 'bez ramki'),
     (0, 'żółty'),
     (1, 'niebieski'),
     (2, 'czerwony'),
     (3, 'zielony'),
     (4, 'brązowy'),
+    (5, 'czarny'),
 )
 
 GLASS = (
-    (0, 'matowe'),
-    (1, 'przezroczyste')
+    (-1, 'brak szkła'),
+    (0, 'zwykłe'),
+    (1, 'antyrefleksyjne')
 )
 
 PILLOW_COLOR = (
@@ -19,11 +22,19 @@ PILLOW_COLOR = (
     (1, 'czerwony'),
     (2, 'zielony'),
     (3, 'czarny'),
+    (4, 'różowy'),
+    (5, 'jasnozielony'),
+    (6, 'granatowy'),
 )
 
 KIND_OF_PILLOW = (
     (0, 'zwykła'),
     (1, 'włochata'),
+)
+
+CATEGORY = (
+    (0, 'Metryczki'),
+    (1, 'Ślubne'),
 )
 
 
@@ -39,7 +50,7 @@ class Picture(models.Model):
     size = models.CharField(max_length=32)
     passe_partout = models.BooleanField(null=False)
     quantity = models.IntegerField()
-    category = models.CharField(max_length=64)
+    category = models.SmallIntegerField(choices=CATEGORY)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     description = models.TextField(null=True, blank=True)
 

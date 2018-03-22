@@ -3,9 +3,14 @@
 <h2>Poduszki:</h2>
 {% for cushion in cushions %}
 
-<img src='{{ cushion.image.url }}'/>
-<br><a href="{% url 'cushion' cushion.id %}">Szczegóły</a>
-{{ cushion.price }}<br>
+
+    <a href="{% url 'cushion' cushion.id %}">
+        <img src='{{ cushion.image.url }}'/>
+    </a>
+
+    <p><strong>{{ cushion.description }}</strong><br>
+        Aby wyświetlić szczegóły klinkij obrazek</p>
+    <br><br><br>
 
 {% endfor %}
 {% endblock %}

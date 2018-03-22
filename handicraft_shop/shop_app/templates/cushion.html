@@ -1,5 +1,9 @@
 {% extends "main_page.html" %}
 {% block content %}
-<img src='{{ cushion.image.url }}'/>
-<br>{{ cushion.get_pillow_color_display }}
+    <img src='{{ cushion.image.url }}'/>
+    <strong><p>Kolor: {{ cushion.get_pillow_color_display }}</p>
+    <p>Rodzaj poduszki: {{ cushion.get_kind_display }}</p>
+    <p>Cena: {{ cushion.price }}</p>
+    <p>Opis: {{ cushion.description }}</p></strong>
+    <br><a href="">Dodaj do koszyka</a>
 {% endblock %}
