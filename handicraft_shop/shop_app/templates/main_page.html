@@ -83,6 +83,7 @@
 {% block content %}
 <h2>Strona główna</h2>
 {#<div class="navbar">#}
+{#<div class="dropdown">#}
 <ul>
   <li><a href="{% url 'offer'%}">Oferta</a>
     <ul>
@@ -90,6 +91,7 @@
         <li><a href="{% url 'cushions' %}">Poduszki</a></li>
     </ul>
   </li>
+{#    </div>#}
   <li><a href="{% url 'about' %}">O mnie</a>
     <ul>
         <li><a href="{% url 'desc' %}">Opis</a></li>
@@ -98,7 +100,8 @@
   </li>
   <li><a href="{% url 'contact' %}">Kontakt</a></li>
 </ul>
-</div>
+
+{#</div>#}
 {% endblock %}
 
 <!--{% block footer %}-->
