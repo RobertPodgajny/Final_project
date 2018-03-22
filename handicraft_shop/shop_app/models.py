@@ -28,11 +28,6 @@ KIND_OF_PILLOW = (
 
 
 class Address(models.Model):
-    # username = models.CharField(max_length=64, unique=True)
-    # first_name = models.CharField(max_length=64)
-    # last_name = models.CharField(max_length=64)
-    # email = models.EmailField(max_length=128, unique=True)
-    # password = models.CharField(max_length=128)
     address = models.TextField()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 

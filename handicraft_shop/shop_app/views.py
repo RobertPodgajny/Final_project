@@ -136,6 +136,9 @@ class RegistrationView(View):
             email = form.cleaned_data['email']
             password = form.cleaned_data['new_password']
             user = User.objects.create_user(username, email, password)
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.save()
 
             address = Address()
 
@@ -143,9 +146,8 @@ class RegistrationView(View):
             address.user = user
             address.save()
 
-            if User.objects.filter(username='username').exists():
-                form.add_error('username', 'Ten login jest już zajęty')
-        return redirect(reverse('login'))
-
+            return redirect(reverse('login'))
+        ctx = {'form': form}
+        return render(request, template_name="register.html", context=ctx)
 
 

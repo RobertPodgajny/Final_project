@@ -82,6 +82,7 @@
         {% endif %}
 {% block content %}
 <h2>Strona główna</h2>
+{#<div class="navbar">#}
 <ul>
   <li><a href="{% url 'offer'%}">Oferta</a>
     <ul>
@@ -97,7 +98,7 @@
   </li>
   <li><a href="{% url 'contact' %}">Kontakt</a></li>
 </ul>
-
+</div>
 {% endblock %}
 
 <!--{% block footer %}-->
