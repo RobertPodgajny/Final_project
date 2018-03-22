@@ -35,6 +35,7 @@ KIND_OF_PILLOW = (
 CATEGORY = (
     (0, 'Metryczki'),
     (1, 'Ślubne'),
+    (2, 'inne'),
 )
 
 

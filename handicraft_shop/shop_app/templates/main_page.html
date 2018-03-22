@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <title>Made by M</title>
     <style>
+
+
+
     .navbar {
     overflow: hidden;
     background-color: #333;
@@ -68,23 +70,44 @@
     display: block;
 }
 
+.right {
+    float: right;
+}
+
+.left {
+    float: inherit;
+}
+
+.p1 {
+{#    align-content: center;#}
+{#    margin-left: auto;#}
+{#    margin-right: auto;#}
+    margin: 30px;
+    float: left;
+}
     </style>
 </head>
-<body>
+<body bgcolor="white"> <!--background="../media/135194_herb_wilk_motto_stark.jpg">-->
 
-<h2>Made by M</h2>
-        <a href="">Koszyk</a>
+
+        <div class="right">
         {% if request.user.is_authenticated %}
         Jesteś zalogowany jako: {{ request.user.username }}
         <p><a href="{% url 'logout' %}">Wyloguj się</a></p>
         {% else %}
         <p><a href="{% url 'login' %}">Zaloguj się</a></p>
         {% endif %}
+        <a href="">Koszyk</a>
+        </div>
+
+<h2>Made by M</h2>
 
 {% block title %}
-<h2>Strona główna</h2>
-{% endblock %}
 
+<h2>Strona główna</h2>
+
+{% endblock %}
+<div class="left">
 <div class="navbar">
     <div class="dropdown">
         <button class="dropbtn">Oferta
@@ -108,9 +131,20 @@
         <a href="{% url 'contact' %}">Kontakt</a>
     </div>
 </div>
-
+</div>
 {% block content %}
-
+<div class="p1">
+    <img src="../media/16735196_1365923713460269_654151022_o.jpg" width="220" height="220">
+</div>
+<div class="p1">
+    <img src="../media/16788108_1253386164756376_1830351837_n.jpg" width="220" height="220">
+</div>
+<div class="p1">
+    <img src="../media/17357254_1398456306873676_1499701801_o.jpg" width="220" height="220">
+</div>
+<div class="p1">
+    <img src="../media/17380106_1400101706709136_2091945161_o.jpg" width="220" height="220">
+</div>
 {% endblock %}
 
 </body>
