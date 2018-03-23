@@ -22,12 +22,6 @@ class MainView(LoginRequiredMixin, View):
                       template_name='main_page.html')
 
 
-# class OfferView(LoginRequiredMixin, View):
-#     def get(self, request):
-#         return render(request,
-#                       template_name='offer.html')
-
-
 class PicturesOfferView(LoginRequiredMixin, View):
     def get(self, request):
         pictures = Picture.objects.all()
@@ -48,12 +42,6 @@ class CushionsOfferView(LoginRequiredMixin, View):
         return render(request,
                       template_name='cushions_offer.html',
                       context=ctx)
-
-
-# class AboutView(LoginRequiredMixin, View):
-#     def get(self, request):
-#         return render(request,
-#                       template_name='about.html')
 
 
 class AboutDescriptionView(LoginRequiredMixin, View):

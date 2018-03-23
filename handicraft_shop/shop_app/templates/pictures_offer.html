@@ -1,6 +1,7 @@
 {% extends "main_page.html" %}
 {%block content %}
-<h2>Obrazy:</h2>
+<br><br><h1><strong>Obrazy:</strong></h1>
+    <div style="text-align: center">
 {% for picture in pictures %}
 
 <img src='{{ picture.image.url }}'/>
@@ -8,4 +9,5 @@
 {{ picture.price }}<br>
 
 {% endfor %}
+    </div>
 {% endblock %}

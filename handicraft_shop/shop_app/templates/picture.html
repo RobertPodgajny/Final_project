@@ -4,7 +4,7 @@
     <h3>Szczegóły:</h3>
     <ul>
         <p>Kategoria: {{ picture.get_category_display }}</p>
-        <p>Kolor ramki: {{ picture.get_frame_color_display }}</p>
+        <p>Opis: {{ picture.description }}</p>
         <p>Rodzaj szkła: {{ picture.get_glass_display }}</p>
         <p>Rozmiar: {{ picture.size }}</p>
 
@@ -15,6 +15,6 @@
         {% endif %}
 
         <p>Cena: {{ picture.price }} zł</p>
-        <p>Opis: {{ picture.description }}</p>
+
     </ul>
 {% endblock %}

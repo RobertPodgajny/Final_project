@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Strona logowania</title>
+    <style>
+        .logo {
+            text-align: center;
+        }
+    </style>
 </head>
-
-{%block content %}
+<body>
+<div class="logo">
+    <img src="../../media/17499110_387756601609077_2741518027806609939_n.png" width="310" height="109">
+</div>
+    {%block content %}
 <form action="" method="POST">
     <h2>Strona logowania</h2>
     <p><strong>Zaloguj się:</strong></p>
@@ -14,5 +22,5 @@
     <input type="submit" value="Zaloguj się">
 </form>
 {% endblock %}
-
+</body>
 </html>

@@ -75,19 +75,26 @@
 }
 
 .left {
-    float: inherit;
+    float: left;
 }
 
 .p1 {
-{#    align-content: center;#}
-{#    margin-left: auto;#}
-{#    margin-right: auto;#}
-    margin: 30px;
+    margin: 40px;
     float: left;
 }
+
+.p2 {
+    margin: 40px;
+    float: left;
+}
+
+.madebym{
+    margin-left: 50%;
+}
+
     </style>
 </head>
-<body bgcolor="white"> <!--background="../media/135194_herb_wilk_motto_stark.jpg">-->
+<body background="../media/iglainitka.gif">
 
 
         <div class="right">
@@ -100,11 +107,11 @@
         <a href="">Koszyk</a>
         </div>
 
-<h2>Made by M</h2>
 
 {% block title %}
-
-<h2>Strona główna</h2>
+    <div class="madebym">
+        <h1><em>Made by M</em></h1>
+    </div>
 
 {% endblock %}
 <div class="left">
@@ -133,6 +140,7 @@
 </div>
 </div>
 {% block content %}
+    <br><br><br><br><br><br><br>
 <div class="p1">
     <img src="../media/16735196_1365923713460269_654151022_o.jpg" width="220" height="220">
 </div>
@@ -144,6 +152,30 @@
 </div>
 <div class="p1">
     <img src="../media/17380106_1400101706709136_2091945161_o.jpg" width="220" height="220">
+</div>
+<div class="p1">
+    <img src="../media/smer.jpg" width="220" height="220">
+</div>
+<div class="p1">
+    <img src="../media/aa.jpg" width="220" height="220">
+</div>
+<div class="p2">
+    <img src="../media/16326577_1353349824717658_883639936_o.jpg" width="220" height="250">
+</div>
+<div class="p2">
+    <img src="../media/16523831_1361497527236221_1089895103_o.jpg" width="220" height="250">
+</div>
+<div class="p2">
+    <img src="../media/18423688_411031905948213_356540632769928113_n.jpg" width="220" height="250">
+</div>
+<div class="p2">
+    <img src="../media/19106048_426898581028212_3949019224555830338_n.jpg" width="220" height="250">
+</div>
+<div class="p2">
+    <img src="../media/22780574_482451215472948_3174526920776378847_n.jpg" width="220" height="250">
+</div>
+<div class="p2">
+    <img src="../media/25659413_508611319523604_5141923458627473410_n.jpg" width="220" height="250">
 </div>
 {% endblock %}
 
