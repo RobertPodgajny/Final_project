@@ -139,3 +139,17 @@ class RegistrationView(View):
         return render(request, template_name="register.html", context=ctx)
 
 
+# class Basket(View):
+#     def get(self, request):
+#         basket = {}
+#         ctx = {
+#             'basket': basket
+#         }
+#         return render(request,
+#                       template_name='basket.html',
+#                       context=ctx)
+
+
+def error_404(request, exception):
+    return render(request,
+                  template_name='404.html')
