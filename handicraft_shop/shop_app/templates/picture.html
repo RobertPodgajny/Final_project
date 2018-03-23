@@ -1,8 +1,11 @@
 {% extends "main_page.html" %}
 {% block content %}
     <img src='{{ picture.image.url }}'/>
-    <h3>Szczegóły:</h3>
+    <div style="margin-left: 1000px">
     <ul>
+        <a href="">Dodaj do koszyka</a>
+        <strong>
+        <h3>Szczegóły:</h3>
         <p>Kategoria: {{ picture.get_category_display }}</p>
         <p>Opis: {{ picture.description }}</p>
         <p>Rodzaj szkła: {{ picture.get_glass_display }}</p>
@@ -15,6 +18,7 @@
         {% endif %}
 
         <p>Cena: {{ picture.price }} zł</p>
-
+        </strong>
     </ul>
+    </div>
 {% endblock %}

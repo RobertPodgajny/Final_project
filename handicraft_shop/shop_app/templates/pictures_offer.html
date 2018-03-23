@@ -1,12 +1,16 @@
 {% extends "main_page.html" %}
 {%block content %}
 <br><br><h1><strong>Obrazy:</strong></h1>
-    <div style="text-align: center">
-{% for picture in pictures %}
 
+{% for picture in pictures %}
+<div style="text-align: center">
+<a href="{% url 'picture' picture.id %}">
 <img src='{{ picture.image.url }}'/>
-<br><a href="{% url 'picture' picture.id %}">Szczegóły</a>
-{{ picture.price }}<br>
+</a>
+
+<p><strong>{{ picture.description }}</strong><br>
+    Aby wyświetlić szczegóły klinkij obrazek</p>
+    <br><br><br>
 
 {% endfor %}
     </div>

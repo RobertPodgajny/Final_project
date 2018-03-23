@@ -1,12 +1,17 @@
 {% extends "main_page.html" %}
 {% block content %}
     <img src='{{ cushion.image.url }}'/>
+    <div style="margin-left: 1000px">
+
     <ul>
+
+    <a href="">Dodaj do koszyka</a>
     <strong>
+    <h3>Szczegóły:</h3>
     <p>Opis: {{ cushion.description }}</p>
     <p>Rodzaj poduszki: {{ cushion.get_kind_display }}</p>
-    <p>Cena: {{ cushion.price }}</p>
+    <p>Cena: {{ cushion.price }} zł</p>
     </strong>
     </ul>
-    <br><a href="">Dodaj do koszyka</a>
+    </div>
 {% endblock %}

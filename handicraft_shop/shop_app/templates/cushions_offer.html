@@ -1,8 +1,8 @@
 {% extends "main_page.html" %}
 {%block content %}
-<h2>Poduszki:</h2>
+    <br><br><h2><strong>Poduszki:</strong></h2>
 {% for cushion in cushions %}
-
+<div style="text-align: center">
 
     <a href="{% url 'cushion' cushion.id %}">
         <img src='{{ cushion.image.url }}'/>
@@ -13,4 +13,5 @@
     <br><br><br>
 
 {% endfor %}
+    </div>
 {% endblock %}
