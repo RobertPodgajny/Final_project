@@ -1,6 +1,7 @@
 # Final_project
 
 Handicraft shop made in Django 2.0
+
 Next step: creating basket and adding products to it
 
 Requirements:
